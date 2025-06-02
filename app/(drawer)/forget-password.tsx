@@ -1,9 +1,7 @@
-import { Ionicons } from "@expo/vector-icons";
-import { useRouter } from "expo-router"; // ✅ Import router for navigation
-import { useState } from "react";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
 import {
   Image,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
@@ -11,44 +9,48 @@ import {
   View,
 } from "react-native";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("+923170282343");
-
-  const router = useRouter(); // ✅ Use useRouter hook
+const ForgetPassword = () => {
+  const router = useRouter();
+  const [phoneNumber, setPhoneNumber] = useState("+92 3170282343");
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()}>
-          <Ionicons name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.headerText}>Sign In</Text>
-      </View>
+    <View style={styles.container}>
+      {/* Title */}
+      <Text style={styles.title}>Forget Password?</Text>
+
+      {/* Description */}
+      <Text style={styles.description}>
+        Enter your number to reset your password. We will send the code to the
+        email so you can reset password
+      </Text>
 
       {/* Phone Number Input */}
-      <Text style={styles.label}>Enter Your Phone Number</Text>
       <View style={styles.inputContainer}>
-        <Text style={styles.countryCode}>🇺🇸 +1</Text>
         <Image
-          source={require("../assets/images/ico-dropdown.png")}
-          style={styles.dropdownImg}
+          source={require("@/assets/images/phone.png")}
+          style={styles.phoneIcon}
         />
         <TextInput
           style={styles.input}
           value={phoneNumber}
-          onChangeText={(text: string) => setPhoneNumber(text)}
+          onChangeText={setPhoneNumber}
           keyboardType="phone-pad"
-          placeholderTextColor="#999"
         />
       </View>
 
       {/* Buttons */}
+      {/* <View style={styles.buttonContainer}>
+        <TouchableOpacity style={[styles.button, styles.whatsappButton]}>
+          <Text style={styles.buttonText}>WhatsApp</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.smsButton]}>
+          <Text style={styles.buttonText}>SMS</Text>
+        </TouchableOpacity>
+      </View> */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.whatsappButton}>
           <Image
-            source={require("../assets/images/whatsapp.png")}
+            source={require("@/assets/images/whatsapp.png")}
             style={styles.whatsappImage}
           />
           <Text style={styles.whatsappButtonText}>WhatsApp</Text>
@@ -56,69 +58,72 @@ export default function Login() {
 
         <TouchableOpacity
           style={styles.smsButton}
-          onPress={() => router.push("(tabs)/verification")} // ✅ Correct navigation
+          onPress={() => router.push("/verify-yourself")}
         >
           <Image
-            source={require("../assets/images/sms.png")}
+            source={require("@/assets/images/sms.png")}
             style={styles.whatsappImage}
           />
           <Text style={styles.smsButtonText}>SMS</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 40,
+    paddingVertical: 40,
     backgroundColor: "#fff",
-    padding: 20,
+    // justifyContent: "center",
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
+  title: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: "#23262F",
+    marginBottom: 10,
+    textAlign: "center",
+  },
+  description: {
+    fontSize: 14,
+    color: "#4B5563",
+    textAlign: "center",
     marginBottom: 30,
-  },
-  headerText: {
-    fontSize: 20,
-    fontWeight: "600",
-    flex: 1,
-    textAlign: "center",
-    color: "#000",
-  },
-  label: {
-    fontSize: 18,
-    fontWeight: "600",
-    marginBottom: 15,
-    color: "#000",
-    textAlign: "center",
+    lineHeight: 18,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#29BDFC",
+    borderWidth: 1.5,
+    borderColor: "#60A5FA",
     borderRadius: 10,
-    paddingHorizontal: 15,
-    paddingVertical: 12,
+    paddingHorizontal: 20,
     marginBottom: 30,
-    backgroundColor: "#fff",
+    backgroundColor: "#fafafa",
   },
-  countryCode: {
-    fontSize: 16,
-    color: "#000",
+  phoneIcon: {
+    width: 20,
+    height: 20,
     marginRight: 10,
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    height: 60,
+    fontSize: 18,
     color: "#000",
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 20,
+  },
+  button: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: "center",
+    marginHorizontal: 8,
   },
   whatsappButton: {
     flexDirection: "row",
@@ -159,8 +164,6 @@ const styles = StyleSheet.create({
     color: "#000",
     fontWeight: "500",
   },
-
-  dropdownImg: {
-    marginLeft: 5,
-  },
 });
+
+export default ForgetPassword;

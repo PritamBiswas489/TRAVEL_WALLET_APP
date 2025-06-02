@@ -8,7 +8,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 
 export default function Login() {
@@ -32,7 +32,7 @@ export default function Login() {
       <View style={styles.inputContainer}>
         <Text style={styles.countryCode}>🇺🇸 +1</Text>
         <Image
-          source={require("../assets/images/ico-dropdown.png")}
+          source={require("@/assets/images/ico-dropdown.png")}
           style={styles.dropdownImg}
         />
         <TextInput
@@ -48,7 +48,7 @@ export default function Login() {
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.whatsappButton}>
           <Image
-            source={require("../assets/images/whatsapp.png")}
+            source={require("@/assets/images/whatsapp.png")}
             style={styles.whatsappImage}
           />
           <Text style={styles.whatsappButtonText}>WhatsApp</Text>
@@ -56,10 +56,10 @@ export default function Login() {
 
         <TouchableOpacity
           style={styles.smsButton}
-          onPress={() => router.push("(tabs)/verification")} // ✅ Correct navigation
+          onPress={() => { }} // ✅ Correct navigation
         >
           <Image
-            source={require("../assets/images/sms.png")}
+            source={require("@/assets/images/sms.png")}
             style={styles.whatsappImage}
           />
           <Text style={styles.smsButtonText}>SMS</Text>

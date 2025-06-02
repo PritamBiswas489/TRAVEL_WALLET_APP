@@ -1,12 +1,31 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useNavigation } from '@react-navigation/native';
+import { Image } from 'expo-image';
+import { Platform, Pressable, StyleSheet, Text } from 'react-native';
+
+import { useLayoutEffect } from 'react';
 
 export default function HomeScreen() {
+  const navigation = useNavigation();
+
+  // Set up drawer icon in header
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <Pressable
+          onPress={() => {
+            // navigation.openDrawer();
+          }}
+          style={{ padding: 8 }}>
+          <Text>Menu</Text>
+        </Pressable>
+      ),
+    });
+  }, [navigation]);
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -17,7 +36,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcomeee!</ThemedText>
+        <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
