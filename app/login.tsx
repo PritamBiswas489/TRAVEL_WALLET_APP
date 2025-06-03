@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router"; // ✅ Import router for navigation
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
   Image,
@@ -14,7 +14,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("+923170282343");
 
-  const router = useRouter(); // ✅ Use useRouter hook
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -55,7 +55,7 @@ export default function Login() {
 
         <TouchableOpacity
           style={styles.smsButton}
-          onPress={() => router.push("(tabs)/verification")} // ✅ Correct navigation
+          onPress={() => router.push("(tabs)/verification")}
         >
           <Image
             source={require("../assets/images/sms.png")}
