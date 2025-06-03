@@ -27,7 +27,10 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="start-page" options={{ headerShown: false }} />
+        {/* <Stack.Screen name="start-page" options={{ headerShown: false }} /> */}
+        <Stack.Screen name="start-page-1" options={{ headerShown: false }} />
+        <Stack.Screen name="start-page-2" options={{ headerShown: false }} />
+        <Stack.Screen name="start-page-3" options={{ headerShown: false }} />
         <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>

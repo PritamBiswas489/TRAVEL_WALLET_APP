@@ -20,12 +20,12 @@ export default function Login() {
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
           <Ionicons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
         <Text style={styles.headerText}>Sign In</Text>
-      </View>
+      </View> */}
 
       {/* Phone Number Input */}
       <Text style={styles.label}>Enter Your Phone Number</Text>
