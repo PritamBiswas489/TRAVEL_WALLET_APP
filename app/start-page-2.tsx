@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   Dimensions,
@@ -9,7 +10,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useRouter } from "expo-router";
 
 const { width, height } = Dimensions.get("window");
 
@@ -20,19 +20,21 @@ const StartPage2 = () => {
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
         <View>
-          <Image
-            source={require("@/assets/images/sc-1-bg.png")}
-            style={styles.image}
-          />
-
-          <View style={styles.subtitleWrap}>
-            <Text style={styles.subtitle}>The Problem & The Solution</Text>
+          <View style={styles.imgContainer}>
+            <Image
+              source={require("@/assets/images/sc-2-bg.png")}
+              style={styles.image}
+            />
           </View>
 
-          <Text style={styles.title}>תשלמו כמו מקומיים בתאילנד</Text>
+          <View style={styles.subtitleWrap}>
+            <Text style={styles.subtitle}>How It Works</Text>
+          </View>
+
+          <Text style={styles.title}>פקידו שקלים, הוציאו באט</Text>
           <Text style={styles.description}>
-            תדלגו על חנויות המרת מטבע ועמלות משיכת כסף. תשלמו בכל מקום בתאילנד
-            רק עם הטלפון
+            טענו את הארנק עם שקלים מהבית. אנחנו מטפלים בהמרה ואתם משלמים עם קודי
+            PromptPay QR בכל מקום
           </Text>
         </View>
       </ScrollView>
@@ -70,9 +72,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 100, // to avoid overlap with navigation
   },
+  imgContainer: {
+    justifyContent: "center",
+    flexDirection: "row",
+  },
   image: {
-    width: "100%",
-    height: 600,
+    width: width * 0.85,
+    height: height * 0.55,
     resizeMode: "contain",
     borderRadius: 20,
   },
@@ -88,18 +94,20 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     fontSize: 16,
     marginBottom: 10,
+    fontFamily: "NunitoRegular",
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 36,
     textAlign: "right",
     marginBottom: 10,
+    fontFamily: "NunitoExtraBold",
   },
   description: {
     textAlign: "right",
     color: "#666",
     fontSize: 16,
     marginBottom: 40,
+    fontFamily: "NunitoRegular",
   },
   navigation: {
     position: "absolute",

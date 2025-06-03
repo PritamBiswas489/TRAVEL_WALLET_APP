@@ -1,4 +1,21 @@
-import { useNavigation } from "@react-navigation/native";
+// import { View, Text, Button } from "react-native";
+// import { useRouter } from "expo-router";
+
+// export default function StartPage3() {
+//   const router = useRouter();
+
+//   return (
+//     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+//       <Text>Start Page 3</Text>
+//       <Button
+//         title="Continue to App"
+//         onPress={() => router.replace("/login")}
+//       />
+//     </View>
+//   );
+// }
+
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   Dimensions,
@@ -13,33 +30,35 @@ import {
 
 const { width, height } = Dimensions.get("window");
 
-const StartPage = () => {
-  const navigation = useNavigation();
+const StartPage4 = () => {
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
         <View>
-          <Image
-            source={require("@/assets/images/sc-1-bg.png")}
-            style={styles.image}
-          />
-
-          <View style={styles.subtitleWrap}>
-            <Text style={styles.subtitle}>The Problem & The Solution</Text>
+          <View style={styles.imgContainer}>
+            <Image
+              source={require("@/assets/images/sc-4-bg.png")}
+              style={styles.image}
+            />
           </View>
 
-          <Text style={styles.title}>תשלמו כמו מקומיים בתאילנד</Text>
+          <View style={styles.subtitleWrap}>
+            <Text style={styles.subtitle}>Trust & Value</Text>
+          </View>
+
+          <Text style={styles.title}>שערי חליפין טובים יותר, אבטחה מלאה</Text>
           <Text style={styles.description}>
-            תדלגו על חנויות המרת מטבע ועמלות משיכת כסף. תשלמו בכל מקום בתאילנד
-            רק עם הטלפון
+            ערי חליפין בזמן אמת, אבטחה ברמת בנק, ואין עמלות נסתרות. הכסף שלכם
+            מוגן שערי
           </Text>
         </View>
       </ScrollView>
 
       <View style={styles.navigation}>
         {/* onPress={() => navigation.replace("Home")} */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.replace("/login")}>
           <Text style={styles.skip}>Skip</Text>
         </TouchableOpacity>
 
@@ -49,7 +68,7 @@ const StartPage = () => {
           <View style={styles.dot} />
         </View>
         {/* onPress={() => navigation.navigate("Onboarding2")} */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.replace("/start-page-5")}>
           <Image
             source={require("@/assets/images/next-btn.png")}
             style={styles.next}
@@ -70,9 +89,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 100, // to avoid overlap with navigation
   },
+  imgContainer: {
+    justifyContent: "center",
+    flexDirection: "row",
+  },
   image: {
-    width: "100%",
-    height: 600,
+    width: width * 0.85,
+    height: height * 0.55,
     resizeMode: "contain",
     borderRadius: 20,
   },
@@ -88,18 +111,20 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     fontSize: 16,
     marginBottom: 10,
+    fontFamily: "NunitoRegular",
   },
   title: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 36,
     textAlign: "right",
     marginBottom: 10,
+    fontFamily: "NunitoExtraBold",
   },
   description: {
     textAlign: "right",
     color: "#666",
     fontSize: 16,
     marginBottom: 40,
+    fontFamily: "NunitoRegular",
   },
   navigation: {
     position: "absolute",
@@ -135,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartPage;
+export default StartPage4;

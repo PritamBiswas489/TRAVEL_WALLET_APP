@@ -16,6 +16,12 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    NunitoLight: require("../assets/fonts/NunitoSans-Light.ttf"),
+    NunitoRegular: require("../assets/fonts/NunitoSans-Regular.ttf"),
+    NunitoSamiBold: require("../assets/fonts/NunitoSans-Regular.ttf"),
+    NunitoBold: require("../assets/fonts/NunitoSans-Bold.ttf"),
+    NunitoBlack: require("../assets/fonts/NunitoSans-Black.ttf"),
+    NunitoExtraBold: require("../assets/fonts/NunitoSans-ExtraBold.ttf"),
   });
 
   if (!loaded) {

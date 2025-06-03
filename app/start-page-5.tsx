@@ -30,7 +30,7 @@ import {
 
 const { width, height } = Dimensions.get("window");
 
-const StartPage3 = () => {
+const StartPage5 = () => {
   const router = useRouter();
 
   return (
@@ -39,7 +39,7 @@ const StartPage3 = () => {
         <View>
           <View style={styles.imgContainer}>
             <Image
-              source={require("@/assets/images/sc-3-bg.png")}
+              source={require("@/assets/images/sc-5-bg.png")}
               style={styles.image}
             />
           </View>
@@ -64,11 +64,11 @@ const StartPage3 = () => {
 
         <View style={styles.dots}>
           <View style={styles.dot} />
-          <View style={styles.dot} />
           <View style={[styles.dot, styles.activeDot]} />
+          <View style={styles.dot} />
         </View>
         {/* onPress={() => navigation.navigate("Onboarding2")} */}
-        <TouchableOpacity onPress={() => router.replace("/start-page-4")}>
+        <TouchableOpacity onPress={() => router.replace("/start-page-6")}>
           <Image
             source={require("@/assets/images/next-btn.png")}
             style={styles.next}
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartPage3;
+export default StartPage5;
