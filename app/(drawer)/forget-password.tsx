@@ -20,8 +20,7 @@ const ForgetPassword = () => {
 
       {/* Description */}
       <Text style={styles.description}>
-        Enter your number to reset your password. We will send the code to the
-        email so you can reset password
+        Enter your number to reset your password. We will send the code to the email so you can reset password
       </Text>
 
       {/* Phone Number Input */}
@@ -80,25 +79,26 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   title: {
-    fontSize: 24,
-    fontWeight: "700",
+    fontSize: 22,
+    fontFamily: "NunitoExtraBold",
     color: "#23262F",
     marginBottom: 10,
     textAlign: "center",
   },
   description: {
-    fontSize: 14,
+    fontSize: 15,
+    fontFamily: "NunitoRegular",
     color: "#4B5563",
     textAlign: "center",
     marginBottom: 30,
-    lineHeight: 18,
+    lineHeight: 24,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1.5,
     borderColor: "#60A5FA",
-    borderRadius: 10,
+    borderRadius: 12,
     paddingHorizontal: 20,
     marginBottom: 30,
     backgroundColor: "#fafafa",
@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 60,
     fontSize: 18,
-    color: "#000",
+    fontFamily: "NunitoRegular",
+    color: "#111014",
   },
   buttonContainer: {
     flexDirection: "row",
@@ -128,7 +129,7 @@ const styles = StyleSheet.create({
   whatsappButton: {
     flexDirection: "row",
     backgroundColor: "#00B164",
-    paddingVertical: 15,
+    paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 10,
     flex: 1,
@@ -144,12 +145,10 @@ const styles = StyleSheet.create({
   },
   smsButton: {
     flexDirection: "row",
-    backgroundColor: "#fff",
-    paddingVertical: 15,
+    backgroundColor: "#29bdfc",
+    paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#ccc",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -157,12 +156,12 @@ const styles = StyleSheet.create({
   whatsappButtonText: {
     fontSize: 16,
     color: "#fff",
-    fontWeight: "500",
+    fontFamily: 'NunitoBold'
   },
   smsButtonText: {
     fontSize: 16,
-    color: "#000",
-    fontWeight: "500",
+    color: "#fff",
+    fontFamily: 'NunitoBold'
   },
 });
 

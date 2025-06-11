@@ -1,39 +1,53 @@
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useRef, useState } from "react";
 import {
+  Modal,
   NativeSyntheticEvent,
   StyleSheet,
   Text,
   TextInput,
   TextInputKeyPressEventData,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
+
+import CheckBg from "@/assets/images/check.svg";
 
 const VerifyScreen = () => {
   const CODE_LENGTH = 5;
   const [code, setCode] = useState<string[]>(Array(CODE_LENGTH).fill(""));
   const [activeIndex, setActiveIndex] = useState(0);
+  const [modalVisible, setModalVisible] = useState(false);
   const inputRefs = useRef<Array<TextInput | null>>([]);
 
   useEffect(() => {
-    // Auto focus first input on mount
     setTimeout(() => {
       inputRefs.current[0]?.focus();
     }, 100);
   }, []);
 
   const handleCodeChange = (text: string, index: number) => {
-    if (!text) return;
-
     const newCode = [...code];
-    const char = text.slice(-1); // Take last character
+
+    if (text === "") {
+      newCode[index] = "";
+      setCode(newCode);
+      return;
+    }
+
+    const char = text.slice(-1); // Take last character only
     newCode[index] = char;
     setCode(newCode);
 
     if (index < CODE_LENGTH - 1) {
       setActiveIndex(index + 1);
       inputRefs.current[index + 1]?.focus();
+    } else {
+      inputRefs.current[index]?.blur(); // dismiss keyboard
+      setTimeout(() => {
+        setModalVisible(true);
+      }, 300);
     }
   };
 
@@ -41,14 +55,17 @@ const VerifyScreen = () => {
     e: NativeSyntheticEvent<TextInputKeyPressEventData>,
     index: number
   ) => {
-    if (e.nativeEvent.key === "Backspace" && code[index] === "") {
-      if (index > 0) {
-        setActiveIndex(index - 1);
-        inputRefs.current[index - 1]?.focus();
+    if (e.nativeEvent.key === "Backspace") {
+      const newCode = [...code];
 
-        const newCode = [...code];
+      if (code[index]) {
+        newCode[index] = "";
+        setCode(newCode);
+      } else if (index > 0) {
         newCode[index - 1] = "";
         setCode(newCode);
+        setActiveIndex(index - 1);
+        inputRefs.current[index - 1]?.focus();
       }
     }
   };
@@ -70,7 +87,7 @@ const VerifyScreen = () => {
           <TextInput
             key={index}
             ref={(ref) => {
-              inputRefs.current[index] = ref as TextInput | null;
+              inputRefs.current[index] = ref;
             }}
             style={[
               styles.codeInput,
@@ -87,6 +104,44 @@ const VerifyScreen = () => {
           />
         ))}
       </View>
+
+      <Modal visible={modalVisible} transparent animationType="fade">
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalBox}>
+            <TouchableOpacity
+              style={styles.modalClose}
+              onPress={() => setModalVisible(false)}
+            >
+              <Ionicons name="close" size={24} color="black" />
+            </TouchableOpacity>
+
+            <View style={styles.checkmarkCircle}>
+              {/* <Text style={styles.checkmark}>✓</Text> */}
+              <CheckBg width={118} height={118} />
+            </View>
+
+            <Text style={styles.modalTitle}>Registration Successful</Text>
+            <Text style={styles.modalSubtitle}>
+              Congratulations, you have been successfully login. Please
+              continue to start using our app.
+            </Text>
+
+            <LinearGradient
+              colors={["#51C8F8", "#8F5CFF"]}
+              start={{ x: .9, y: 3 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.modalButton}
+            >
+              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalButtonInner}>
+                <Text style={styles.modalButtonText}>Continue</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+            {/* <TouchableOpacity style={styles.modalButton}>
+              <Text style={styles.modalButtonText}>Continue</Text>
+            </TouchableOpacity> */}
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -102,12 +157,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: "NunitoExtraBold",
     marginBottom: 15,
     textAlign: "center",
   },
   message: {
     fontSize: 16,
+    fontFamily: "NunitoRegular",
     color: "#333",
     textAlign: "center",
     marginBottom: 30,
@@ -126,11 +182,76 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderRadius: 16,
     fontSize: 20,
+    fontFamily: "NunitoRegular",
     backgroundColor: "#fafafa",
   },
   activeInput: {
     borderColor: "#69B7FF",
     borderWidth: 1,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalBox: {
+    width: "85%",
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    paddingHorizontal: 25,
+    paddingVertical: 40,
+    alignItems: "center",
+    position: "relative",
+  },
+  modalClose: {
+    position: "absolute",
+    top: 16,
+    right: 16,
+  },
+  checkmarkCircle: {
+    // backgroundColor: "#00c853",
+    width: 118,
+    height: 118,
+    borderRadius: 45,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  checkmark: {
+    color: "#fff",
+    fontSize: 50,
+    // fontFamily: "NunitoExtraBold",
+  },
+  modalTitle: {
+    fontSize: 20,
+    color: "#000",
+    textAlign: "center",
+    marginBottom: 10,
+    fontFamily: "NunitoExtraBold",
+  },
+  modalSubtitle: {
+    fontSize: 14,
+    fontFamily: "NunitoRegular",
+    color: "#555",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  modalButton: {
+    width: "80%",
+    borderRadius: 25,
+    paddingVertical: 0,
+    paddingHorizontal: 0,
+    overflow: "hidden",
+  },
+  modalButtonInner: {
+    paddingVertical: 12,
+    alignItems: "center",
+  },
+  modalButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontFamily: "NunitoBold",
   },
 });
 

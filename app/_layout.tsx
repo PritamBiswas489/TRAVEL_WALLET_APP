@@ -18,7 +18,7 @@ export default function RootLayout() {
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     NunitoLight: require("../assets/fonts/NunitoSans-Light.ttf"),
     NunitoRegular: require("../assets/fonts/NunitoSans-Regular.ttf"),
-    NunitoSamiBold: require("../assets/fonts/NunitoSans-Regular.ttf"),
+    NunitoSamiBold: require("../assets/fonts/NunitoSans-SemiBold.ttf"),
     NunitoBold: require("../assets/fonts/NunitoSans-Bold.ttf"),
     NunitoBlack: require("../assets/fonts/NunitoSans-Black.ttf"),
     NunitoExtraBold: require("../assets/fonts/NunitoSans-ExtraBold.ttf"),
@@ -34,10 +34,10 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         {/* <Stack.Screen name="start-page" options={{ headerShown: false }} /> */}
+        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="start-page-1" options={{ headerShown: false }} />
         <Stack.Screen name="start-page-2" options={{ headerShown: false }} />
         <Stack.Screen name="start-page-3" options={{ headerShown: false }} />
-        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

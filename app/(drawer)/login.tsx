@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   label: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 20,
+    fontFamily: "NunitoExtraBold",
     marginBottom: 15,
     color: "#000",
     textAlign: "center",
@@ -107,13 +107,16 @@ const styles = StyleSheet.create({
   },
   countryCode: {
     fontSize: 16,
+    fontFamily: "NunitoRegular",
     color: "#000",
     marginRight: 10,
   },
   input: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 18,
+    fontFamily: "NunitoRegular",
     color: "#000",
+    paddingLeft: 15,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -123,7 +126,7 @@ const styles = StyleSheet.create({
   whatsappButton: {
     flexDirection: "row",
     backgroundColor: "#00B164",
-    paddingVertical: 15,
+    paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 10,
     flex: 1,
@@ -139,12 +142,10 @@ const styles = StyleSheet.create({
   },
   smsButton: {
     flexDirection: "row",
-    backgroundColor: "#fff",
-    paddingVertical: 15,
+    backgroundColor: "#29bdfc",
+    paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#ccc",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
@@ -152,12 +153,12 @@ const styles = StyleSheet.create({
   whatsappButtonText: {
     fontSize: 16,
     color: "#fff",
-    fontWeight: "500",
+    fontFamily: "NunitoBold",
   },
   smsButtonText: {
     fontSize: 16,
-    color: "#000",
-    fontWeight: "500",
+    color: "#fff",
+    fontFamily: "NunitoBold",
   },
 
   dropdownImg: {

@@ -31,7 +31,14 @@ export default function DrawerLayout() {
         name="verify-yourself"
         options={{ drawerLabel: "Verify Yourself", title: "Verify Yourself" }}
       />
-
+      <Drawer.Screen
+        name="create-passcode"
+        options={{ drawerLabel: "Create Passcode", title: "Create Passcode" }}
+      />
+      <Drawer.Screen
+        name="confirm-passcode"
+        options={{ drawerLabel: "Confirm Passcode", title: "Confirm Passcode" }}
+      />
       <Drawer.Screen
         name="page1"
         options={{ drawerLabel: "New page", title: "New page" }}

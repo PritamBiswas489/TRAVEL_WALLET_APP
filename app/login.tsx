@@ -55,7 +55,7 @@ export default function Login() {
 
         <TouchableOpacity
           style={styles.smsButton}
-          onPress={() => router.push("(tabs)/verification")}
+          onPress={() => router.push("/verification")}
         >
           <Image
             source={require("../assets/images/sms.png")}

@@ -3,11 +3,10 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
-  View,
+  View
 } from "react-native";
 
-const VerificationCodeInput = () => {
+const CreatePasscode = () => {
   const [code, setCode] = useState<string[]>(["", "", "", ""]);
   const [focusedIndex, setFocusedIndex] = useState<number | null>(0);
   const inputsRef = useRef<TextInput[]>([]);
@@ -18,7 +17,6 @@ const VerificationCodeInput = () => {
       newCode[index] = value;
       setCode(newCode);
 
-      // Auto focus next input if value is not empty
       if (value !== "" && index < code.length - 1) {
         inputsRef.current[index + 1]?.focus();
       }
@@ -27,10 +25,8 @@ const VerificationCodeInput = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Verification Code</Text>
-      <Text style={styles.subtitle}>
-        We have sent the code verification to your mobile number
-      </Text>
+      <Text style={styles.title}>Create a Passcode</Text>
+      <Text style={styles.subtitle}>Your 4-digit code to unlock the app</Text>
 
       <View style={styles.codeContainer}>
         {code.map((digit, index) => {
@@ -43,7 +39,7 @@ const VerificationCodeInput = () => {
               ref={(ref) => {
                 if (ref) inputsRef.current[index] = ref;
               }}
-              value={digit}
+              value={digit ? "*" : ""} // Show "*" if there's a value
               onChangeText={(value) => handleChange(index, value)}
               keyboardType="numeric"
               maxLength={1}
@@ -59,10 +55,6 @@ const VerificationCodeInput = () => {
           );
         })}
       </View>
-
-      <TouchableOpacity>
-        <Text style={styles.resendText}>Resend Code</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -102,7 +94,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     fontSize: 24,
     fontFamily: "NunitoRegular",
-
     backgroundColor: "#fafafa",
   },
   activeInput: {
@@ -111,14 +102,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   droppedInput: {
-    backgroundColor: "#fafaf", // Red for empty & blurred input
+    backgroundColor: "#fff",
   },
-  resendText: {
-    color: "#1E90FF",
-    fontSize: 16,
-    marginTop: 30,
-    fontFamily: "NunitoRegular",
-  },
+
 });
 
-export default VerificationCodeInput;
+export default CreatePasscode;
